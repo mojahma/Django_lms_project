@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Courses</h1>
+
+    <style>
+        /* Your CSS styles for cards */
+    </style>
+
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light h-100">
+                {% if course.image %}
+                <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+                {% else %}
+                <div class="card-img-top" style="background-color: #ccc; height: 200px;"></div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary">View Course</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

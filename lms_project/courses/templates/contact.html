@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS styles for the contact form */
+    .contact-form {
+        border: 2px solid #000; /* Black border */
+        background-color: #DDD787; /* Red background */
+        padding: 20px; /* Padding inside the card */
+        margin-bottom: 20px; /* Some space at the bottom */
+    }
+
+    /* Adjust input field width */
+    .contact-form .form-group .col-sm-9 input[type="text"],
+    .contact-form .form-group .col-sm-9 input[type="email"],
+    .contact-form .form-group .col-sm-9 textarea {
+        width: 100%; /* Make inputs stretch to full width */
+        padding: 10px; /* Padding inside inputs */
+        border: 1px solid #D6DACE; /* Border color for inputs */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    /* Adjust label alignment and spacing */
+    .contact-form .form-group .col-sm-3 {
+        text-align: right; /* Right-align labels */
+        padding-top: 10px; /* Vertical padding for labels */
+    }
+
+    /* Button styling */
+    .contact-form .form-group .col-sm-9 .btn-primary {
+        width: 100%; /* Button width same as input fields */
+    }
+</style>
+
+<div class="card contact-form">
+    <div class="card-body">
+        <h2 class="card-title">Contact Us</h2>
+        <p class="card-text">Give us your feedback on the user experience.</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

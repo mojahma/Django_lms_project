@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ lesson.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ lesson.title }}</h1>
+    <p>{{ lesson.content }}</p>
+    
+    <!-- Display quiz link if there is a quiz associated with this lesson -->
+    {% if lesson.quiz %}
+        <p><a href="{% url 'quiz' lesson.id %}">Take Quiz</a></p>
+    {% endif %}
+    
+    <!-- Add navigation links to previous and next lessons if available -->
+    {% if lesson.course.lessons.count > 1 %}
+        <p>
+            {% if lesson.id > 1 %}
+                <a href="{% url 'lesson_detail' lesson.id|add:'-1' %}">Previous Lesson</a>
+            {% endif %}
+            {% if lesson.id < lesson.course.lessons.count %}
+                <a href="{% url 'lesson_detail' lesson.id|add:'1' %}">Next Lesson</a>
+            {% endif %}
+        </p>
+    {% endif %}
+{% endblock %}

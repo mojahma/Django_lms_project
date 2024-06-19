@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The BenchMarQ{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #FFA500; /* Dark orange background */
+        }
+        .navbar-custom {
+            background-color: #222133 !important; /* Dark blue background */
+        }
+        .rounded-pill {
+            border-radius: 50px; /* Curved edges for buttons */
+        }
+        /* Shiny silver button style */
+        .nav-link.silver-btn {
+            background-color: silver;
+            color: black !important; /* Black text color */
+            border: 2px outset silver; /* Bevel edge border */
+            padding: 8px 16px; /* Adjust padding for slimmer buttons */
+            transition: all 0.3s ease-in-out;
+            margin-right: 8px; /* Add margin between buttons */
+        }
+        .nav-link.silver-btn:hover {
+            background-color: #c0c0c0; /* Lighter silver on hover */
+            color: black !important; /* Black text color on hover */
+            border: 2px inset silver; /* Inset border effect on hover */
+        }
+        /* Ensure main content area takes remaining height */
+        .main-content {
+            min-height: calc(100vh - 56px); /* 100vh - height of navbar (56px) */
+            /* Adjust this calculation based on your actual navbar height */
+        }
+        /* Custom logo style */
+        .navbar-brand img {
+            height: 40px; /* Adjust height as needed */
+            margin-right: 10px; /* Provide some space between logo and text */
+        }
+        /* Notification bell style */
+        .notification-bell {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+            The BenchMarQ
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill silver-btn" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill silver-btn" href="{% url 'course_list' %}">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill silver-btn" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill silver-btn" href="{% url 'contact' %}">Contact Us</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded-pill silver-btn" href="{% url 'logout_view' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link rounded-pill silver-btn" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- Notification Bell -->
+        <div class="notification-bell">
+            <a href="{% url 'notifications' %}">
+                <i class="fa fa-bell"></i> <!-- Replace with your bell icon -->
+            </a>
+        </div>
+    </nav>
+    <div class="container mt-4 main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% block footer %}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

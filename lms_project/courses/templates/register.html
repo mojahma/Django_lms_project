@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS styles for the register form */
+    .register-form {
+        border: 2px solid #000; /* Black border */
+        background-color: #D5DA9B; /* Red background */
+        padding: 20px; /* Padding inside the card */
+        margin-bottom: 20px; /* Some space at the bottom */
+    }
+
+    /* Adjust input field width */
+    .register-form .form-group .col-sm-9 input[type="text"],
+    .register-form .form-group .col-sm-9 input[type="email"],
+    .register-form .form-group .col-sm-9 input[type="password"] {
+        width: 100%; /* Make inputs stretch to full width */
+        padding: 10px; /* Padding inside inputs */
+        border: 1px solid #ced4da; /* Border color for inputs */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    /* Adjust label alignment and spacing */
+    .register-form .form-group .col-sm-3 {
+        text-align: left; /* Left-align labels */
+        padding-top: 10px; /* Vertical padding for labels */
+    }
+
+    /* Button styling */
+    .register-form .form-group .col-sm-9 .btn-primary {
+        width: 100%; /* Button width same as input fields */
+    }
+</style>
+
+<div class="card register-form">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-4" style="text-decoration: underline;">Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group row">
+                <label for="{{ form.first_name.id_for_label }}" class="col-sm-3 col-form-label">First Name:</label>
+                <div class="col-sm-9">
+                    {{ form.first_name }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.last_name.id_for_label }}" class="col-sm-3 col-form-label">Last Name:</label>
+                <div class="col-sm-9">
+                    {{ form.last_name }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.username.id_for_label }}" class="col-sm-3 col-form-label">Username:</label>
+                <div class="col-sm-9">
+                    {{ form.username }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.email.id_for_label }}" class="col-sm-3 col-form-label">Email:</label>
+                <div class="col-sm-9">
+                    {{ form.email }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.password1.id_for_label }}" class="col-sm-3 col-form-label">Password:</label>
+                <div class="col-sm-9">
+                    {{ form.password1 }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.password2.id_for_label }}" class="col-sm-3 col-form-label">Confirm Password:</label>
+                <div class="col-sm-9">
+                    {{ form.password2 }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

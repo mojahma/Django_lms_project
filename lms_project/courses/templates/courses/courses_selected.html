@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Courses Selected{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Courses Selected</h2>
+    <ul>
+        {% for course in courses_selected %}
+            <li>{{ course.title }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Leaderboard</h2>
+    <ul>
+        {% for entry in leaderboard %}
+            <li>{{ entry.user.username }} - {{ entry.score }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

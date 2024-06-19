@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Progress{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Progress</h2>
+    <div class="progress-bar">
+        <div class="progress-bar-inner" style="width: {{ user_progress }}%;">{{ user_progress }}%</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Notifications</h2>
+    <ul>
+        {% for notification in notifications %}
+            <li>{{ notification.message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
