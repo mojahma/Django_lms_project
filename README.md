@@ -19,5 +19,9 @@ The Django Learning Management System (LMS) project is a web-based application d
 - [Python](https://www.python.org/downloads/) (v3.8 or later)
 - [Django](https://www.djangoproject.com/) (v3.2 or later)
 
+#### Admin Site 
+           username - admin
+           Password -admin
+
 ### Steps
 
